@@ -59,7 +59,7 @@ ALTER TABLE cardapio.alteracoes ENABLE ROW LEVEL SECURITY;
 ALTER TABLE cardapio.inscricoes_push ENABLE ROW LEVEL SECURITY;
 REVOKE ALL ON cardapio.alteracoes, cardapio.inscricoes_push FROM anon, authenticated;
 
--- 4. Permissões do role da API, quando ele existe neste banco (deploy/role-e-grants.sql) ----------
+-- 4. Permissões do role da API, quando ele existe neste banco (implantacao/3-usuario-da-api.sql) ----------
 DO $$
 BEGIN
   IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'easymenu_api') THEN

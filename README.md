@@ -22,6 +22,12 @@ navegador.
 
 Node **26.13.0** nos dois (`.nvmrc`).
 
+## Ambiente novo (homologação ou produção)
+
+Passo a passo numerado, com os scripts na ordem, em [`implantacao/LEIA-ME.md`](implantacao/LEIA-ME.md):
+conferir a base, criar as tabelas, criar o usuário da API, gerar os segredos, ligar a descida para
+a loja, conferir e testar de ponta a ponta.
+
 ## Rodar local
 
 ```sh
@@ -103,12 +109,12 @@ Gerar os QR codes: abra `/admin/qrcodes`, informe a `ADMIN_API_KEY`, o id da loj
 - Inscrição de push só aceita endereço dos serviços de push dos navegadores (Google, Mozilla, Apple,
   Microsoft): a API faz POST nele, e sem a lista um login de garçom faria a API chamar endereços
   internos (SSRF).
-- Em produção a API conecta com o role restrito `easymenu_api` (`backend/deploy/role-e-grants.sql`);
+- Em produção a API conecta com o role restrito `easymenu_api` (`implantacao/3-usuario-da-api.sql`);
   `/api/v1/health/db` mostra `role_restrito: true`.
 
 ## Verificação
 
-- `backend`: `npm run lint && npm run typecheck && npm test` (94 testes; o de push decifra a
+- `backend`: `npm run lint && npm run typecheck && npm test` (101 testes; o de push decifra a
   mensagem como o celular faria).
 - `frontend`: `npm run lint && npm run typecheck && npm test && npm run build` (19 testes, incluindo o
   service worker do garçom).

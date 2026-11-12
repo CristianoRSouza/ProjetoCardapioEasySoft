@@ -40,6 +40,6 @@ CREATE INDEX IF NOT EXISTS idx_envios_cozinha ON cardapio.envios (store_id, crea
   WHERE status <> 'pronto';
 
 -- Sem policy de propósito: ninguém lê pelo PostgREST com a chave anon/authenticated.
--- Só a API (role easymenu_api, ver deploy/role-e-grants.sql) e o service_role acessam.
+-- Só a API (role easymenu_api, ver implantacao/3-usuario-da-api.sql) e o service_role acessam.
 ALTER TABLE cardapio.envios ENABLE ROW LEVEL SECURITY;
 REVOKE ALL ON cardapio.envios FROM anon, authenticated;

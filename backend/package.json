@@ -13,7 +13,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "db:migrar": "node scripts/migrar.mjs"
+    "db:migrar": "node scripts/migrar.mjs",
+    "implantacao:gerar": "node scripts/juntar-migracoes.mjs"
   },
   "overrides": {
     "minimatch": "^11.0.4"

@@ -30,7 +30,7 @@ CREATE INDEX IF NOT EXISTS idx_usuarios_loja ON cardapio.usuarios (store_id);
 ALTER TABLE cardapio.usuarios ENABLE ROW LEVEL SECURITY;
 REVOKE ALL ON cardapio.usuarios FROM anon, authenticated;
 
--- Permissão do role da API, quando ele já existe neste banco (deploy/role-e-grants.sql).
+-- Permissão do role da API, quando ele já existe neste banco (implantacao/3-usuario-da-api.sql).
 -- Sem DELETE: usuário sai desativado, não apagado.
 DO $$
 BEGIN
