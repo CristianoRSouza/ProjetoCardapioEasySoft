@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/*
+ * Design do protótipo (Lovable) portado sem mudar: paleta "Vermelho Apetitoso",
+ * Bebas Neue nos títulos e Barlow no texto. Celular primeiro, moldura de 480px.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-brand-red: var(--brand-red);
+  --color-brand-red-dark: var(--brand-red-dark);
+  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-yellow-dark: var(--brand-yellow-dark);
+  --color-surface-soft: var(--surface-soft);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+
+  --font-display: var(--fonte-titulo), Impact, "Arial Narrow", sans-serif;
+  --font-body: var(--fonte-texto), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.985 0.012 60);
+  --foreground: oklch(0.18 0 0);
+  --surface-soft: oklch(0.955 0.022 55);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0 0);
+  --primary: oklch(0.58 0.22 27);
+  --primary-foreground: oklch(1 0 0);
+  --brand-red: oklch(0.58 0.22 27);
+  --brand-red-dark: oklch(0.48 0.2 27);
+  --brand-yellow: oklch(0.85 0.18 90);
+  --brand-yellow-dark: oklch(0.74 0.17 85);
+  --secondary: oklch(0.93 0.025 55);
+  --secondary-foreground: oklch(0.18 0 0);
+  --muted: oklch(0.93 0.025 55);
+  --muted-foreground: oklch(0.45 0.02 40);
+  --accent: oklch(0.85 0.18 90);
+  --accent-foreground: oklch(0.18 0 0);
+  --destructive: oklch(0.58 0.22 27);
+  --success: oklch(0.62 0.16 145);
+  --success-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.015 55);
+  --input: oklch(0.9 0.015 55);
+  --ring: oklch(0.58 0.22 27);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-muted);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    line-height: 1.4;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior: none;
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes check-pop {
+  0% { transform: scale(0) rotate(-20deg); opacity: 0; }
+  50% { transform: scale(1.35) rotate(8deg); opacity: 1; }
+  75% { transform: scale(0.9) rotate(-4deg); }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+.animate-check-pop {
+  animation: check-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes cart-bump {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.04); }
+  60% { transform: scale(0.99); }
+  100% { transform: scale(1); }
+}
+.animate-cart-bump {
+  animation: cart-bump 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes subir {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.animate-subir {
+  animation: subir 0.25s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-check-pop, .animate-cart-bump, .animate-subir { animation: none; }
+}
+
+@media print {
+  body { background: white; }
+  .nao-imprimir { display: none !important; }
+}
